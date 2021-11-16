@@ -20,14 +20,14 @@ class _LanchMenuState extends State<LanchMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           '점심 메뉴 생성기',
           style: TextStyle(color: Colors.amber),
         ),
         actions: [
           IconButton(
               onPressed: () => _getBottomSheet(),
-              icon: Icon(Icons.add_outlined))
+              icon: const Icon(Icons.add_outlined))
         ],
       ),
       body: Container(
@@ -57,14 +57,14 @@ class _LanchMenuState extends State<LanchMenu> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0)),
               title: Column(
-                children: [Text('음식점을 입력해주세요')],
+                children: const [Text('음식점을 입력해주세요')],
               ),
               actions: <Widget>[
                 ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text('확인'))
+                    child: const Text('확인'))
               ],
             );
           });
@@ -87,24 +87,24 @@ class _LanchMenuState extends State<LanchMenu> {
         child: Column(
           children: [
             Container(
-              child: Text(
+              child: const Text(
                 '음식점 추가',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
               ),
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
             ),
             Container(
               width: 200,
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               child: TextField(
                 controller: _addMenuController,
               ),
             ),
             Container(
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
                 child: ElevatedButton(
                     onPressed: () => _addMenu(_addMenuController.text),
-                    child: Text('추가하기')))
+                    child: const Text('추가하기')))
           ],
         ),
       ),
