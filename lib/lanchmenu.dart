@@ -66,7 +66,7 @@ class _LanchMenuState extends State<LanchMenu> {
               onPressed: () {
                 setState(() {
                   _menuList.clear();
-                });
+                });//
               },
               child: const Text('리셋'))
         ],
