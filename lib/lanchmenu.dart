@@ -61,7 +61,14 @@ class _LanchMenuState extends State<LanchMenu> {
             height: 100,
           ),
           ElevatedButton(
-              onPressed: () => _selectButtonEvent(), child: const Text('뽑기'))
+              onPressed: () => _selectButtonEvent(), child: const Text('뽑기')),
+          ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _menuList.clear();
+                });
+              },
+              child: const Text('리셋'))
         ],
       ),
       alignment: Alignment.center,
