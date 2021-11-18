@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -34,9 +36,67 @@ class _LanchMenuState extends State<LanchMenu> {
         width: double.infinity,
         height: double.infinity,
         color: Colors.amber,
-        child: Text(_menuList.toString()),
+        child: _getBody(),
       ),
     );
+  }
+
+  Widget _getBody() {
+    return Container(
+      width: double.infinity,
+      child: Column(
+        children: <Widget>[
+          const Text(
+            '추가한 메뉴',
+            style: TextStyle(fontSize: 40),
+          ),
+          const SizedBox(
+            height: 100,
+          ),
+          Text(
+            _menuList.toString(),
+            style: const TextStyle(fontSize: 40),
+          ),
+          const SizedBox(
+            height: 100,
+          ),
+          ElevatedButton(
+              onPressed: () => _selectButtonEvent(), child: const Text('뽑기'))
+        ],
+      ),
+      alignment: Alignment.center,
+    );
+  }
+
+  void _selectButtonEvent() {
+    if (_menuList.length > 2) {
+      // 메뉴가 있는 경우
+      _getRandomMenu();
+    } else {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('메뉴를 3개 이상 추가해주세요'),
+              actions: [
+                TextButton(
+                    onPressed: () => Navigator.pop(context), child: Text('OK'))
+              ],
+            );
+          });
+    }
+  }
+
+  void _getRandomMenu() {
+    Random _random = new Random();
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('오늘의 점심 메뉴는?'),
+            content: Text(_menuList[_random.nextInt(_menuList.length)]),
+          );
+        });
   }
 
   void _getBottomSheet() {
