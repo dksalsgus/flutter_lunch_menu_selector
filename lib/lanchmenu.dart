@@ -22,7 +22,7 @@ class _LanchMenuState extends State<LanchMenu> {
       appBar: AppBar(
         title: const Text(
           '점심 메뉴 생성기',
-          style: TextStyle(color: Colors.amber),
+          style: TextStyle(color: Colors.white),
         ),
         actions: [
           IconButton(
