@@ -103,7 +103,10 @@ class _LanchMenuState extends State<LanchMenu> {
             Container(
                 margin: const EdgeInsets.all(10),
                 child: ElevatedButton(
-                    onPressed: () => _addMenu(_addMenuController.text),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      _addMenu(_addMenuController.text);
+                    },
                     child: const Text('추가하기')))
           ],
         ),
