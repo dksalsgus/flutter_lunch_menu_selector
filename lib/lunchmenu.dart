@@ -98,10 +98,17 @@ class _LunchMenuState extends State<LunchMenu> {
             height: 100,
           ),
           ElevatedButton(
-              onPressed: () => _selectButtonEvent(), child: Text('랜덤 뽑기'))
+              onPressed: () => _selectButtonEvent(), child: Text('랜덤 뽑기')),
+          ElevatedButton(onPressed: () => _resetButton(), child: Text('Reset'))
         ],
       ),
     );
+  }
+
+  void _resetButton() {
+    setState(() {
+      _menuList.clear();
+    });
   }
 
   void _getBottomSheet() {
