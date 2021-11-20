@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_crud/lanchmenu.dart';
+import 'package:flutter_crud/lunchmenu.dart';
 
 void main() => runApp(Myapp());
 
@@ -8,7 +8,7 @@ class Myapp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LanchMenu(),
+      home: LunchMenu(),
     );
   }
 }
