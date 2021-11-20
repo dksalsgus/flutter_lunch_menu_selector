@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +36,70 @@ class _LunchMenuState extends State<LunchMenu> {
         width: double.infinity,
         height: double.infinity,
         color: Colors.amber,
-        child: Text(_menuList.toString()),
+        child: _getBody(),
+      ),
+    );
+  }
+
+  void _selectButtonEvent() {
+    if (_menuList.length >= 3) {
+      _getRandomMenu();
+    } else {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0)),
+              title: Text('메뉴를 3개 이상 추가해주세요'),
+              actions: [
+                TextButton(
+                    onPressed: () => Navigator.pop(context), child: Text('OK'))
+              ],
+            );
+          });
+    }
+  }
+
+  Widget _getRandomMenu() {
+    Random _random = new Random();
+    return AlertDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+      title: Text('오늘의 메뉴는?'),
+      content: Text(_menuList[_random.nextInt(_menuList.length)]),
+    );
+  }
+
+  Widget _getBody() {
+    return Container(
+      alignment: Alignment.center,
+      child: Column(
+        children: [
+          SizedBox(
+            width: double.infinity,
+            height: 100,
+          ),
+          const Text(
+            '점심 메뉴 리스트',
+            style: TextStyle(
+              fontSize: 40,
+            ),
+          ),
+          const SizedBox(
+            width: double.infinity,
+            height: 100,
+          ),
+          Text(
+            _menuList.toString(),
+            style: TextStyle(fontSize: 40),
+          ),
+          const SizedBox(
+            width: double.infinity,
+            height: 100,
+          ),
+          ElevatedButton(
+              onPressed: () => _selectButtonEvent(), child: Text('랜덤 뽑기'))
+        ],
       ),
     );
   }
@@ -72,9 +137,8 @@ class _LunchMenuState extends State<LunchMenu> {
     }
     setState(() {
       _menuList.add(menu);
-      print(menu);
+      Navigator.pop(context);
     });
-    print(_menuList.toString());
     _addMenuController.clear();
   }
 
