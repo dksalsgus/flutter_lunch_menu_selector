@@ -61,13 +61,19 @@ class _LunchMenuState extends State<LunchMenu> {
     }
   }
 
-  Widget _getRandomMenu() {
+  void _getRandomMenu() {
+    print('random');
     Random _random = new Random();
-    return AlertDialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-      title: Text('오늘의 메뉴는?'),
-      content: Text(_menuList[_random.nextInt(_menuList.length)]),
-    );
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)),
+            title: Text('오늘의 메뉴는?'),
+            content: Text(_menuList[_random.nextInt(_menuList.length)]),
+          );
+        });
   }
 
   Widget _getBody() {
